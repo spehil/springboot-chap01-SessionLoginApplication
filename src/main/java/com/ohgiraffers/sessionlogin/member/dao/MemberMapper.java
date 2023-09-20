@@ -6,5 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 @Mapper
 public interface MemberMapper {
     MemberDTO findMemberById(String memberId);
+    void registMember(MemberDTO member);
+    void addMemberAuthority();
+
 
 }

@@ -53,4 +53,38 @@
        LEFT JOIN TBL_AUTHORITY C ON(B.AUTHORITY_CODE = C.AUTHORITY_CODE)
        WHERE A.MEMBER_ID = #{admin}
    </select>
+
+    <insert id="registMember">
+        INSERT
+            INTO TBL_MEMBER
+        (
+        MEMBER_NO
+        , MEMBER_ID
+        ,MEMBER_PWD
+        ,MEMBER_NAME
+        )
+        VALUES
+        (
+        SEQ_MEMBER_NO.NEXTVAL
+        ,#{id}
+        ,#{pwd}
+        ,#{name}
+
+        )
+    </insert>
+
+    <insert id="addMemberAuthority">
+
+        INSERT
+            INTO TBL_MEMBER_ROLE
+        (
+        MEMBER_NO
+        ,AUTHORITY_CODE
+        )
+        VALUES
+        (
+        SEQ_MEMBER_NO.CURRVAL <!--이전에 생긴 시퀀스 번호를 현재값으로 참조 -->
+        ,2
+        )
+    </insert>
 </mapper>
